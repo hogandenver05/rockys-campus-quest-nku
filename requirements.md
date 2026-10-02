@@ -1,0 +1,10 @@
+- Rocky has a permanent public page.
+- A QR code can take someone directly to that page.
+- A visitor can submit a photo without creating an account.
+- A visitor can add a caption to their photo.
+- The photo is persistently stored.
+- The submission is associated with Rocky.
+- The gallery displays previous discoveries.
+- The gallery displays newly submitted discoveries after loading/refreshing.
+- A visitor can leave a comment/mission for the next visitor.
+- An Instagram page runs in parallel with Rocky's platform, posting clues about activity in the gallery.

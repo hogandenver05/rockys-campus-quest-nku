@@ -1,0 +1,36 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /discoveries/{discoveryId} {
+      allow read: if true;
+
+      allow create: if request.auth != null
+        && request.resource.data.keys().hasOnly([
+          'rockId',
+          'imageUrl',
+          'imagePath',
+          'caption',
+          'mission',
+          'createdAt',
+          'createdBy'
+        ])
+        && request.resource.data.rockId == 'rocky'
+        && request.resource.data.createdBy == request.auth.uid
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.imageUrl is string
+        && request.resource.data.imageUrl.size() <= 2048
+        && request.resource.data.imagePath is string
+        && request.resource.data.imagePath.size() <= 512
+        && request.resource.data.caption is string
+        && request.resource.data.caption.size() <= 180
+        && request.resource.data.mission is string
+        && request.resource.data.mission.size() <= 180;
+
+      allow update, delete: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

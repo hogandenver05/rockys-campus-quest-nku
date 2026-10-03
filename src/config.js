@@ -2,9 +2,9 @@ export const ROCK = {
   id: 'rocky',
   name: 'Rocky',
   eyebrow: 'ROCKY\'S CAMPUS QUEST - NKU',
-  headline: 'Found me? Add your chapter.',
+  headline: "Where's Rocky?",
   description:
-    'Rocky moves through the community one discovery at a time. Add a photo, leave a note, and give the next person something to do.',
+    "One rock. One campus. A story written by everyone who finds him. Follow Rocky's journey, and if you find him in the real world, scan his QR code to add the next chapter.",
 }
 
 export const LIMITS = {

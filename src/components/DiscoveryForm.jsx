@@ -5,7 +5,7 @@ import { prepareImage, validateImageFile } from '../utils/image'
 const COOLDOWN_MS = 30_000
 const LAST_SUBMIT_KEY = 'rocky-last-submit-at'
 
-export default function DiscoveryForm({ open, onClose, onSubmit, firebaseConfigured }) {
+export default function DiscoveryForm({ open, onClose, onSubmit, onSuccess, firebaseConfigured }) {
   const [file, setFile] = useState(null)
   const [preview, setPreview] = useState('')
   const [caption, setCaption] = useState('')
@@ -39,7 +39,7 @@ export default function DiscoveryForm({ open, onClose, onSubmit, firebaseConfigu
   const submitLabel = useMemo(() => {
     if (status === 'preparing') return 'Preparing photo…'
     if (status === 'uploading') return `Sharing… ${progress}%`
-    return 'Share discovery'
+    return 'Add my chapter'
   }, [status, progress])
 
   if (!open) return null
@@ -99,15 +99,15 @@ export default function DiscoveryForm({ open, onClose, onSubmit, firebaseConfigu
             <div className="success-state__icon">✓</div>
             <p className="eyebrow">Chapter added</p>
             <h2 id="discovery-form-title">You're part of Rocky's story now.</h2>
-            <p>Your discovery was saved. The gallery has been refreshed with your new chapter.</p>
-            <button className="button button--primary" type="button" onClick={resetAndClose}>See the gallery</button>
+            <p>Your chapter is saved. Pass Rocky on when you’re ready—the next finder will see the mission you left.</p>
+            <button className="button button--primary" type="button" onClick={() => { resetAndClose(); onSuccess?.() }}>View Rocky's journey</button>
           </div>
         ) : (
           <form onSubmit={handleSubmit}>
             <div className="modal__header">
               <div>
-                <p className="eyebrow">Add a discovery</p>
-                <h2 id="discovery-form-title">What happened when you found Rocky?</h2>
+                <p className="eyebrow">You found Rocky</p>
+                <h2 id="discovery-form-title">Add your chapter to Rocky's journey.</h2>
               </div>
               <button className="icon-button" type="button" aria-label="Close" onClick={resetAndClose} disabled={busy}>×</button>
             </div>
@@ -133,7 +133,7 @@ export default function DiscoveryForm({ open, onClose, onSubmit, firebaseConfigu
                 <img src={preview} alt="Selected discovery preview" />
               ) : (
                 <span>
-                  <strong>Choose or take a photo</strong>
+                  <strong>Choose or take your Rocky photo</strong>
                   <small>JPG, PNG, WebP, HEIC or HEIF • up to 12 MB</small>
                 </span>
               )}
@@ -146,7 +146,7 @@ export default function DiscoveryForm({ open, onClose, onSubmit, firebaseConfigu
                 onChange={(event) => setCaption(event.target.value)}
                 maxLength={LIMITS.caption}
                 rows="3"
-                placeholder="Where did you find Rocky? What was happening?"
+                placeholder="Where did Rocky end up? What was happening?"
                 disabled={busy}
               />
               <small className="field__count">{caption.length}/{LIMITS.caption}</small>
@@ -159,7 +159,7 @@ export default function DiscoveryForm({ open, onClose, onSubmit, firebaseConfigu
                 onChange={(event) => setMission(event.target.value)}
                 maxLength={LIMITS.mission}
                 rows="3"
-                placeholder="Take Rocky somewhere unexpected…"
+                placeholder="Give the next finder something fun to do with Rocky…"
                 disabled={busy}
               />
               <small className="field__count">{mission.length}/{LIMITS.mission}</small>

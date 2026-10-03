@@ -2,17 +2,15 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { ROCK } from './config'
 import { isFirebaseConfigured } from './firebase'
 import { createDiscovery, listDiscoveries } from './services/discoveries'
-import DiscoveryForm from './components/DiscoveryForm'
+import FoundView from './components/FoundView'
 import Gallery from './components/Gallery'
 import Hero from './components/Hero'
-import MissionCard from './components/MissionCard'
 import RockMark from './components/RockMark'
 
 export default function App() {
   const [discoveries, setDiscoveries] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
-  const [formOpen, setFormOpen] = useState(false)
 
   const refresh = useCallback(async () => {
     setLoading(true)
@@ -41,16 +39,31 @@ export default function App() {
     await refresh()
   }
 
+  const normalizedPath = window.location.pathname.replace(/\/+$/, '') || '/'
+  const isFoundView = normalizedPath === '/found'
+
+  if (isFoundView) {
+    return (
+      <FoundView
+        mission={latestMission}
+        loading={loading}
+        error={error}
+        onSubmit={handleSubmit}
+        firebaseConfigured={isFirebaseConfigured}
+      />
+    )
+  }
+
   return (
     <>
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="Rocky home">
+        <a className="brand" href="/" aria-label="Rocky home">
           <RockMark compact />
           <span>ROCKY</span>
         </a>
-        <button className="button button--small button--primary" type="button" onClick={() => setFormOpen(true)}>
-          I found Rocky
-        </button>
+        <a className="button button--small button--ghost" href="#gallery">
+          View journey
+        </a>
       </header>
 
       <main id="top">
@@ -60,15 +73,10 @@ export default function App() {
           </div>
         )}
 
-        <Hero
-          rock={ROCK}
-          discoveryCount={discoveries.length}
-          onAddDiscovery={() => setFormOpen(true)}
-        />
+        <Hero rock={ROCK} discoveryCount={discoveries.length} />
 
         <div className="content-shell">
-          <MissionCard mission={latestMission} />
-          <section className="how-it-works" aria-labelledby="how-heading">
+          <section className="how-it-works" id="how-it-works" aria-labelledby="how-heading">
             <div className="section-heading section-heading--compact">
               <div>
                 <p className="eyebrow">One object. Many people.</p>
@@ -86,7 +94,6 @@ export default function App() {
             loading={loading}
             error={error}
             onRefresh={refresh}
-            onAddDiscovery={() => setFormOpen(true)}
           />
         </div>
       </main>
@@ -95,13 +102,6 @@ export default function App() {
         <RockMark compact />
         <p>Built for the NKU Fall 2026 Hackathon. Rocky belongs to the community.</p>
       </footer>
-
-      <DiscoveryForm
-        open={formOpen}
-        onClose={() => setFormOpen(false)}
-        onSubmit={handleSubmit}
-        firebaseConfigured={isFirebaseConfigured}
-      />
     </>
   )
 }

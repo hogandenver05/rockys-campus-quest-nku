@@ -1,6 +1,6 @@
 import RockMark from './RockMark'
 
-export default function Hero({ rock, discoveryCount, onAddDiscovery }) {
+export default function Hero({ rock, discoveryCount }) {
   return (
     <section className="hero">
       <div className="hero__copy">
@@ -8,11 +8,11 @@ export default function Hero({ rock, discoveryCount, onAddDiscovery }) {
         <h1>{rock.headline}</h1>
         <p className="hero__description">{rock.description}</p>
         <div className="hero__actions">
-          <button className="button button--primary" type="button" onClick={onAddDiscovery}>
-            Add my discovery
-          </button>
-          <a className="button button--ghost" href="#gallery">
+          <a className="button button--primary" href="#gallery">
             See Rocky's journey
+          </a>
+          <a className="button button--ghost" href="#how-it-works">
+            How it works
           </a>
         </div>
         <div className="hero__stat" aria-label={`${discoveryCount} discoveries shared`}>

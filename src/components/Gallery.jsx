@@ -1,6 +1,6 @@
 import DiscoveryCard from './DiscoveryCard'
 
-export default function Gallery({ discoveries, loading, error, onRefresh, onAddDiscovery }) {
+export default function Gallery({ discoveries, loading, error, onRefresh }) {
   return (
     <section className="gallery-section" id="gallery" aria-labelledby="gallery-heading">
       <div className="section-heading">
@@ -20,8 +20,7 @@ export default function Gallery({ discoveries, loading, error, onRefresh, onAddD
         <div className="empty-state">
           <div className="empty-state__icon">✦</div>
           <h3>Rocky's story starts here.</h3>
-          <p>No discoveries have been shared yet. Be the first person to leave a chapter behind.</p>
-          <button className="button button--primary" type="button" onClick={onAddDiscovery}>Add the first discovery</button>
+          <p>Rocky hasn't been discovered yet. When someone finds him in the real world and scans his QR code, their chapter will appear here.</p>
         </div>
       ) : (
         <div className="gallery-grid" aria-live="polite">

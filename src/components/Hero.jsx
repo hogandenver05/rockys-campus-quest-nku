@@ -22,7 +22,7 @@ export default function Hero({ rock, discoveryCount, onAddDiscovery }) {
       </div>
       <div className="hero__visual">
         <RockMark />
-        <div className="hero__sticker">SCAN • SNAP • PASS IT ON</div>
+        <div className="hero__sticker">SCAN • SNAP • PASS IT ON!</div>
       </div>
     </section>
   )

@@ -265,6 +265,7 @@ textarea:focus-visible {
 .rock-mark--compact {
   width: 34px;
   height: 30px;
+  padding-right: 1em;
 }
 
 .rock-mark--compact .rock-mark__face {
@@ -763,6 +764,10 @@ textarea:focus-visible {
 
   .rock-mark {
     transform: scale(1);
+  }
+
+  .rock-mark--compact {
+    padding-right: none;
   }
 
   .hero__sticker {

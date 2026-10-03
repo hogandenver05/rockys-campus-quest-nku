@@ -76,9 +76,9 @@ export default function App() {
               </div>
             </div>
             <div className="steps">
-              <article><span>01</span><h3>Find</h3><p>Spot Rocky in the real world and scan the QR code.</p></article>
-              <article><span>02</span><h3>Share</h3><p>Add a photo and a short caption. No profile required.</p></article>
-              <article><span>03</span><h3>Pass it on</h3><p>Leave a mission for the next person who finds Rocky.</p></article>
+              <article><span>01</span><h3>Scan</h3><p>Spot Rocky in the real world and scan the QR code.</p></article>
+              <article><span>02</span><h3>Snap</h3><p>Snap a photo and add a short caption. No profile required.</p></article>
+              <article><span>03</span><h3>Pass it on!</h3><p>Leave a mission for the next person who finds Rocky.</p></article>
             </div>
           </section>
           <Gallery

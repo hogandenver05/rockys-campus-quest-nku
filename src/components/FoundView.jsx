@@ -60,8 +60,8 @@ export default function FoundView({ mission, loading, error, onSubmit, firebaseC
 
             <div className="found-reveal__copy">
               <p className="eyebrow">Rocky's Campus Quest - NKU</p>
-              <h1 id="found-heading">You found me!</h1>
-              <p>Nice find. You're officially part of Rocky's journey.</p>
+              <h1 id="found-heading">You found me!!</h1>
+              <p>You're officially part of Rocky's journey.</p>
             </div>
 
             <div className="found-reveal__actions">

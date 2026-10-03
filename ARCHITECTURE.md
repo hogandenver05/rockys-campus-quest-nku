@@ -8,12 +8,12 @@ Physical Rocky
 Netlify production URL
    ↓
 React + Vite 8 (Rolldown)
-   ├─ read gallery ───────────────→ Cloud Firestore
-   ├─ silent anonymous session ───→ Firebase Authentication
+   ├─ read gallery ──────────────── Cloud Firestore
+   ├─ silent anonymous session ──── Firebase Authentication
    └─ submit discovery
         ├─ resize/compress photo in browser
-        ├─ upload photo ──────────→ Cloud Storage for Firebase
-        └─ save metadata ─────────→ Cloud Firestore
+        ├─ upload photo ─────────── Cloud Storage for Firebase
+        └─ save metadata ────────── Cloud Firestore
 ```
 
 ## Why there is no custom server in the MVP

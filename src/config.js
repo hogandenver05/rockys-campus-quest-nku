@@ -1,7 +1,7 @@
 export const ROCK = {
   id: 'rocky',
   name: 'Rocky',
-  eyebrow: 'NKU community mascot experiment',
+  eyebrow: 'ROCKY\'S CAMPUS QUEST - NKU',
   headline: 'Found me? Add your chapter.',
   description:
     'Rocky moves through the community one discovery at a time. Add a photo, leave a note, and give the next person something to do.',

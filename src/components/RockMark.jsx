@@ -6,8 +6,6 @@ export default function RockMark({ compact = false }) {
         <span className="rock-mark__eye rock-mark__eye--right" />
         <span className="rock-mark__smile" />
       </div>
-      <span className="rock-mark__spark rock-mark__spark--one">✦</span>
-      <span className="rock-mark__spark rock-mark__spark--two">✦</span>
     </div>
   )
 }
